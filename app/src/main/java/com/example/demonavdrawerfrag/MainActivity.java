@@ -3,6 +3,9 @@ package com.example.demonavdrawerfrag;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -71,20 +74,33 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
+        Fragment fragment = null;
+
+
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            fragment = new ImportFragment();
         } else if (id == R.id.nav_gallery) {
-
+            fragment = new GalleryFragment();
         } else if (id == R.id.nav_slideshow) {
-
+            fragment = new SlideShowFragment();
         } else if (id == R.id.nav_manage) {
-
+            fragment = new ToolsFragment();
         } else if (id == R.id.nav_share) {
-
+            fragment = new ShareFragment();
         } else if (id == R.id.nav_send) {
+            fragment = new SendFragment();
+        }
 
+        if(fragment != null){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+
+            ft.replace(R.id.screen_area, fragment);
+
+            ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

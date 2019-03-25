@@ -9,24 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-public class ImportFragment extends Fragment {
-
+public class ToolsFragment extends Fragment {
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_import, null);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_tools,null);
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Toast.makeText(getActivity(),"You are inside Import Fragment", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "You are insdie tools screen", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
